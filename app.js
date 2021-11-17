@@ -26,12 +26,15 @@ const express = require('express'),
 // Project Files
 const { variables } = require('./config/Middlewares')
 const AppRoutes = require('./app-routes')
+const path = require('path')
 
 // View engine
 app.engine(
   'hbs',
   hbs({
     extname: 'hbs',
+    defaultLayout: false,
+    layoutsDir: path.join(__dirname, 'views'),
   })
 )
 app.set('view engine', 'hbs')

@@ -31,6 +31,8 @@ app.post('/post-it', upload.single('image'), async (req, res) => {
         post_time: new Date().getTime(),
       }
 
+    if (typeof insert.group_id !== 'number') insert.group_id = 0
+
     await ProcessImage(obj)
     DeleteAllOfFolder(`${root}/dist/temp/`)
 

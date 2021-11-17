@@ -207,7 +207,7 @@ INSERT INTO `follow_system` (`follow_id`, `follow_by`, `follow_by_username`, `fo
 CREATE TABLE `groups` (
   `group_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `bio` varchar(2000) NOT NULL,
+  `bio` varchar(2000),
   `admin` int(11) NOT NULL,
   `group_type` enum('public','private') NOT NULL DEFAULT 'public',
   `created` varchar(100) NOT NULL
@@ -512,7 +512,7 @@ CREATE TABLE `posts` (
   `filter` varchar(100) COLLATE utf8mb4_bin NOT NULL DEFAULT 'normal',
   `location` mediumtext COLLATE utf8mb4_bin NOT NULL,
   `type` enum('user','group') COLLATE utf8mb4_bin NOT NULL DEFAULT 'user',
-  `group_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL DEFAULT 0,
   `post_time` varchar(100) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -924,18 +924,18 @@ CREATE TABLE `users` (
   `surname` varchar(32) COLLATE utf8mb4_bin NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_bin NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_bin NOT NULL,
-  `bio` varchar(1000) COLLATE utf8mb4_bin NOT NULL,
+  `bio` varchar(1000) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `joined` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   `email_verified` enum('yes','no') COLLATE utf8mb4_bin NOT NULL DEFAULT 'no',
   `account_type` enum('public','private') COLLATE utf8mb4_bin NOT NULL DEFAULT 'public',
-  `instagram` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `twitter` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `facebook` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `github` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `website` varchar(500) COLLATE utf8mb4_bin NOT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `instagram` varchar(500) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
+  `twitter` varchar(500) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
+  `facebook` varchar(500) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
+  `github` varchar(500) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
+  `website` varchar(500) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
+  `phone` varchar(20) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `isOnline` enum('yes','no') COLLATE utf8mb4_bin NOT NULL DEFAULT 'no',
-  `lastOnline` varchar(100) COLLATE utf8mb4_bin NOT NULL
+  `lastOnline` varchar(100) COLLATE utf8mb4_bin NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
